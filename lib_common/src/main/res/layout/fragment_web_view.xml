@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!--健康资讯-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:TopBar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+
+    <com.fast.common.widget.TopBar
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1b70ff"
+        android:fitsSystemWindows="true"
+        TopBar:image_rightFirstButton="@drawable/btn_web_refresh"
+        TopBar:text_barTitle="WebView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_20"
+            android:process="com.example.web"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

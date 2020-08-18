@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:TopBar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.fast.common.widget.TopBar
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/top_bar_bg_blue" />
+
+
+    <include layout="@layout/include_base_recycler" />
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Activity背景灰色 -->
+    <color name="activity_bg_color_white" >#f8faff</color>
+
+    <!--文字颜色-蓝色-->
+    <color name="text_color_blue" >#33b5e5e5</color>
+
+
+</resources>

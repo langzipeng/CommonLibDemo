@@ -1,0 +1,143 @@
+ext {
+    //true 每个业务Module可以单独开发
+    //false 每个业务Module以lib的方式运行
+    //修改之后需要Sync方可生效
+    isModule = false
+    //版本号
+    versions = [
+            //applicationId                    :       "com.lzp.commonlibdemo",
+            compileSdkVersion: 28,
+            minSdkVersion    : 21,
+            targetSdkVersion : 26,
+            versionCode      : 1,
+            versionName      : '1.0.1',
+            buildToolsVersion: '28.0.3'
+    ]
+
+    dependencies = [
+            Annotations                    : 'androidx.annotation:annotation:1.0.0',
+            AppcompatV7                    : 'androidx.appcompat:appcompat:1.0.0',
+            "Design"                       : 'com.google.android.material:material:1.0.0',
+            Recyclerview                   : 'androidx.recyclerview:recyclerview:1.0.0',
+            Cardview                       : 'androidx.cardview:cardview:1.0.0',
+
+            /*RxAndroid*/
+            RxAndroid                      : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            /*RxJava*/
+            RxJava2                        : 'io.reactivex.rxjava2:rxjava:2.1.14',
+            /*Rx生命周期管理*/
+            RxLifecycle                    : 'com.trello.rxlifecycle2:rxlifecycle:2.2.0',
+            RxLifecycleComp                : 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0',
+            /*RxPermissions */
+            RxPermissions                  : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
+
+            /*ButterKnife依赖注入*/
+            butterknife                    : 'com.jakewharton:butterknife:10.0.0',
+            butterknife_compiler           : 'com.jakewharton:butterknife-compiler:10.0.0',
+
+            /*网络请求框架*/
+            Retrofit                       : 'com.squareup.retrofit2:retrofit:2.4.0',
+            RetrofitConverter              : 'com.squareup.retrofit2:converter-gson:2.4.0',
+            AdapterRxJava2                 : 'com.squareup.retrofit2:adapter-rxjava2:2.4.0',
+            Okhttp3                        : 'com.squareup.okhttp3:logging-interceptor:3.10.0',
+            Gson                           : 'com.google.code.gson:gson:2.8.6',
+            Logger                         : 'com.orhanobut:logger:2.1.1',
+
+            /*eventBus*/
+            EventBus                       : 'org.greenrobot:eventbus:3.2.0',
+
+            /*内存泄漏检测工具 **/
+            Leakcanary                     : 'com.squareup.leakcanary:leakcanary-android:2.3',
+
+            /*Glide */
+            Glide                          : 'com.github.bumptech.glide:glide:4.11.0',
+            GlideCompiler                  : "com.github.bumptech.glide:compiler:4.11.0",
+
+            /*Arouter */
+            ArouterApi                     : 'com.alibaba:arouter-api:1.5.0',
+            arouter_compiler               : 'com.alibaba:arouter-compiler:1.2.2',
+
+            /*Facebook stetho */
+            stetho                         : 'com.facebook.stetho:stetho:1.5.1',
+            stetho_okhttp                  : 'com.facebook.stetho:stetho-okhttp3:1.5.1',
+
+            //AndroidUtilCode
+            "Util-code"                    : 'com.blankj:utilcodex:1.29.0',
+
+            /*条件选择器依赖*/
+            PickerView                     : 'com.contrarywind:Android-PickerView:4.1.9',
+
+            /*MPAndroid */
+            MPAndroidChart                 : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
+
+            /*Greendao */
+            greendao                       : 'org.greenrobot:greendao:3.3.0',
+
+            //pdf显示View
+            pdfViewer                      : 'com.github.barteksc:android-pdf-viewer:2.8.2',
+
+            /*SmartRefreshLayout*/
+            SmartRefreshLayout             : 'com.scwang.smart:refresh-layout-kernel:2.0.1',
+            //经典刷新头
+            "SmartRefreshLayout-classics"  : 'com.scwang.smart:refresh-header-classics:2.0.1',
+
+
+            //ble FastBle
+            FastBleLib                     : 'com.clj.fastble:FastBleLib:2.3.4',
+
+            //lombok
+            "lombokJavax"                  : "javax.annotation:javax.annotation-api:1.2",
+            "lombok"                       : "org.projectlombok:lombok:1.16.6",
+
+            //底部导航栏
+            "BottomNavigationBar"          : 'com.ashokvarma.android:bottom-navigation-bar:2.0.5',
+
+            //UMPush
+            "UMPushUtdid"                  : 'com.umeng.umsdk:utdid:1.1.5.3',
+            "UMPushSDK"                    : 'com.umeng.umsdk:push:6.0.1',
+
+            //腾讯QMUI
+            "QMUI"                         : 'com.qmuiteam:qmui:2.0.0-alpha10',
+
+            //微信支付
+            "Wechat-pay"                   : 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.8',
+
+            //七牛云
+            "Photo-cloud"                  : 'com.qiniu:qiniu-android-sdk:7.3.15',
+
+            //高德定位
+            "Gould-location"               : 'com.amap.api:location:latest.integration',
+
+            //DoraemonKit
+            "DoraemonKit-debug"            : "com.didichuxing.doraemonkit:doraemonkit:3.1.8",
+            "DoraemonKit-release"          : "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8",
+
+            //Zxing
+            "Zxing"                        : 'com.google.zxing:core:3.3.3',
+
+            //知乎图片选择-matisse
+            "Matisse"                      : 'com.zhihu.android:matisse:0.5.3-beta3',
+
+            //  --------------------BGAPhotoPicker--以下4个库是必须依赖的 ----------------
+            "Bga-photopicker"              : 'cn.bingoogolapple:bga-photopicker:2.0.2@aar',
+            "Legacy-support"               : 'androidx.legacy:legacy-support-v4:1.0.0',
+            "Bga-baseadapter"              : 'cn.bingoogolapple:bga-baseadapter:2.0.0@aar',
+
+            //EasyPermissions
+            "Easypermissions"              : 'pub.devrel:easypermissions:3.0.0',
+
+            //轮播图ConvenientBanner
+            "Convenient-banner"            : 'com.bigkoo:convenientbanner:2.0.5',
+
+            //缓存
+            "Mmkv-static"                  : 'com.tencent:mmkv-static:1.1.1',
+
+            //二维码
+            "Huawei-scan"                  : 'com.huawei.hms:scan:1.2.0.301',
+
+            //BaseRecyclerViewAdapterHelper
+            "BaseRecyclerViewAdapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
+
+    ]
+
+}

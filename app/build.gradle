@@ -1,0 +1,140 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+def cfg = rootProject.ext.versions
+
+android {
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    //签名配置
+    signingConfigs {
+
+        common_lib_demo {
+            //签名文件的路径
+            storeFile file("E:/")
+            //Keystore password
+            storePassword ""
+            //Key alias
+            keyAlias ""
+            //Key Password
+            keyPassword ""
+        }
+
+    }
+
+
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        //因为多渠道已经有包名了，此处注释掉
+        //applicationId cfg.applicationId
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions 'default'
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+//        ndk {
+//            // 设置支持的 SO 库构架，一般而言，取你所有的库支持的构架的`交集`。
+//            abiFilters 'armeabi', 'x86',
+//                    'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+//        }
+
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                //includeCompileClasspath = true
+            }
+        }
+    }
+
+//    aaptOptions.cruncherEnabled = false
+//    aaptOptions.useNewCruncher = false
+    productFlavors {
+        common_lib_demo{
+            applicationId "com.lzp.commonlib"
+            resValue "string", "app_name", "公共库Demo"
+            buildConfigField "String", "APP_File_Provider", '"com.lzp.commonlib.fileprovider"'
+            buildConfigField "String", "BASE_SERVER_URL", '"http://my/app/"'
+            //manifest里面的值
+            manifestPlaceholders = [
+                    MTA_CHANNEL_VALUE: "commonlib",
+                    FILE_PROVIDER    : "com.lzp.commonlib.fileprovider",
+                    APPLICATION_ID   : "com.lzp.commonlib"]
+            //signingConfig signingConfigs.commonlib
+        }
+
+    }
+
+
+    buildTypes {
+        release {
+            // 打开混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+       //     signingConfig signingConfigs.common_lib_demo
+        }
+        debug {
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled false
+            // 移除无用的resource文件
+            shrinkResources false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+           // signingConfig signingConfigs.common_lib_demo
+
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:27.1.1'
+    }
+
+
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        implementation project(':lib_common')
+
+        //Arouter路由
+        implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+        annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+
+
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+

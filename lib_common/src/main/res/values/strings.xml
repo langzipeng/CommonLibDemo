@@ -1,0 +1,17 @@
+<resources>
+    <string name="biz_app_name">UsoppWatch</string>
+
+    <!--标题栏-->
+    <string name="topbar_title">标题</string>
+    <string name="topbar_subtitle">副标题</string>
+    <string name="topbar_back">返回</string>
+    <string name="topbar_edit">编辑</string>
+    <string name="topbar_history">历史报告</string>
+    <string name="topbar_scan">扫描</string>
+    <string name="topbar_find">设备查找</string>
+
+    <!--空布局-->
+    <string name="no_data">暂无数据</string>
+    <string name="error_data_net">网络请求失败,请点击屏幕重试</string>
+
+</resources>

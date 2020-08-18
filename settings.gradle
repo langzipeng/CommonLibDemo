@@ -1,0 +1,2 @@
+rootProject.name='CommonLibDemo'
+include ':app', 'lib_common'

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--*****************************************TopBar*****************************************-->
+    <declare-styleable name="TopBar">
+        <attr name="switch_showBottomLine" format="boolean" />
+        <attr name="image_leftFirstButton" format="reference" />
+        <attr name="image_leftScondButton" format="reference" />
+        <attr name="image_rightFirstButton" format="reference" />
+        <attr name="image_rightScondButton" format="reference" />
+        <attr name="text_barTitle" format="string" />
+        <attr name="text_barSubtitle" format="string" />
+        <attr name="text_leftButton" format="string" />
+        <attr name="text_rightButton" format="string" />
+        <attr name="color_defaultText" format="color" />
+        <attr name="color_leftText" format="color" />
+        <attr name="color_rightText" format="color" />
+        <attr name="color_titleText" format="color" />
+        <attr name="color_subtitleText" format="color" />
+        <attr name="color_bottomLine" format="color" />
+    </declare-styleable>
+
+    <!--*****************************************自定义加载框***********************************-->
+    <declare-styleable name="LVCircularRing">
+        <attr name="bgColor" format="color" />
+        <attr name="barColor" format="color" />
+    </declare-styleable>
+
+</resources>

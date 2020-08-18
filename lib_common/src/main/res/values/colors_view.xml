@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--主题颜色 -->
+    <color name="primary_blue">#649fea</color>
+    <color name="primary_dark_blue">#1f7def</color>
+    <color name="accent_blue">#1f7def</color>
+
+    <!--SmartRefreshLayout primaryColor and accentColor -->
+    <color name="srl_accent_blue">#527c96</color>
+    <color name="srl_primary_white">#f8faff</color>
+
+    <!--topBar背景色 -->
+    <color name="top_bar_bg_blue">#1f7def</color>
+
+</resources>

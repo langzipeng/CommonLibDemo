@@ -1,0 +1,225 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
+
+def cfg = rootProject.ext.versions
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+    buildToolsVersion rootProject.ext.versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //Arouter路由配置
+        javaCompileOptions
+                {
+                    annotationProcessorOptions {
+                        includeCompileClasspath = true
+                        arguments = [AROUTER_MODULE_NAME: project.getName()]
+                    }
+                }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            consumerProguardFiles 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+
+dependencies {
+
+    //Android 注解库
+    api rootProject.ext.dependencies["Annotations"]
+
+    // 在项目中的libs中的所有的.jar结尾的文件，都是依赖
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    //noinspection GradleCompatible
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+
+    //noinspection GradleCompatible
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    api(rootProject.ext.dependencies["AppcompatV7"]) {
+        exclude module: "support-annotations"
+    }
+
+    /*RxAndroid */
+    api(rootProject.ext.dependencies["RxAndroid"]) {
+        exclude module: "rxjava"
+    }
+
+    /*RxJava*/
+    api rootProject.ext.dependencies["RxJava2"]
+
+    /*Rx生命周期管理*/
+    api(rootProject.ext.dependencies["RxLifecycle"]) {
+        exclude module: 'rxjava'
+        exclude module: 'jsr305'
+    }
+    api(rootProject.ext.dependencies["RxLifecycleComp"]) {
+        exclude module: 'support-v4'
+        exclude module: 'appcompat-v7'
+        exclude module: 'support-annotations'
+        exclude module: 'rxjava'
+        exclude module: 'rxandroid'
+        exclude module: 'rxlifecycle'
+    }
+
+    /*ButterKnife依赖注入*/
+    api rootProject.ext.dependencies["butterknife"]
+    api rootProject.ext.dependencies["butterknife_compiler"]
+
+    /*Arouter */
+    api rootProject.ext.dependencies["ArouterApi"]
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+
+    /*网络请求框架*/
+    api(rootProject.ext.dependencies["Retrofit"]) {
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    api(rootProject.ext.dependencies["RetrofitConverter"]) {
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+        exclude module: 'retrofit'
+    }
+    api(rootProject.ext.dependencies["AdapterRxJava2"]) {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
+    }
+    api rootProject.ext.dependencies["Okhttp3"]
+    api rootProject.ext.dependencies["Gson"]
+
+    //api rootProject.ext.dependencies["Logger"]
+
+    /*eventBus*/
+    api rootProject.ext.dependencies["EventBus"]
+
+    /*内存泄漏检测工具 **/
+    debugImplementation rootProject.ext.dependencies["Leakcanary"]
+
+    /*Glide */
+    api rootProject.ext.dependencies["Glide"]
+    annotationProcessor rootProject.ext.dependencies["GlideCompiler"]
+
+    /*RxPermissions */
+    api(rootProject.ext.dependencies["RxPermissions"]) {
+        exclude module: 'rxjava'
+    }
+
+    /*条件选择器依赖 */
+    api rootProject.ext.dependencies["PickerView"]
+
+    /*MPAndroidChart */
+    api rootProject.ext.dependencies["MPAndroidChart"]
+
+    /*ble FastBle*/
+    api rootProject.ext.dependencies["FastBleLib"]
+
+    /*Facebook stetho */
+    api rootProject.ext.dependencies["stetho"]
+    api(rootProject.ext.dependencies["stetho_okhttp"]) {
+        exclude module: 'okio'
+    }
+
+    //lombok
+    api rootProject.ext.dependencies["lombok"]
+    api rootProject.ext.dependencies["lombokJavax"]
+
+    /*SmartRefreshLayout */
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    //经典刷新头
+    api rootProject.ext.dependencies["SmartRefreshLayout-classics"]
+
+
+    /*Recyclerview*/
+    api rootProject.ext.dependencies["Recyclerview"]
+
+    /*Cardview */
+    api rootProject.ext.dependencies["Cardview"]
+
+    /*pdf显示View */
+    api rootProject.ext.dependencies["pdfViewer"]
+
+    /*greendao */
+    api rootProject.ext.dependencies["greendao"]
+
+    /*底部导航栏 */
+    api rootProject.ext.dependencies["BottomNavigationBar"]
+
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    api rootProject.ext.dependencies["UMPushUtdid"]
+
+    //PushSDK
+    api rootProject.ext.dependencies["UMPushSDK"]
+
+    //腾讯QMUI
+    api rootProject.ext.dependencies["QMUI"]
+
+    //微信支付
+    api rootProject.ext.dependencies["Wechat-pay"]
+
+    //七牛云
+    api rootProject.ext.dependencies["Photo-cloud"]
+
+    // //高德定位
+    api rootProject.ext.dependencies["Gould-location"]
+
+    //DoraemonKit
+    debugApi rootProject.ext.dependencies["DoraemonKit-debug"]
+    releaseApi rootProject.ext.dependencies["DoraemonKit-release"]
+
+    api rootProject.ext.dependencies["Zxing"]
+
+    api rootProject.ext.dependencies["Matisse"]
+
+    api rootProject.ext.dependencies["Design"]
+
+    //  -------------------- 以下4个库是必须依赖的 ----------图片选择相关------
+
+    api rootProject.ext.dependencies["Bga-photopicker"]
+    api rootProject.ext.dependencies["Legacy-support"]
+    api rootProject.ext.dependencies["Bga-baseadapter"]
+
+    api rootProject.ext.dependencies["Easypermissions"]
+
+    //轮播图ConvenientBanner
+    api rootProject.ext.dependencies["Convenient-banner"]
+
+    //缓存
+    api rootProject.ext.dependencies["Mmkv-static"]
+
+    //二维码
+    api rootProject.ext.dependencies["Huawei-scan"]
+
+    //AndroidUtilCode
+    api rootProject.ext.dependencies["Util-code"]
+
+    //BaseRecyclerViewAdapterHelper
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+
+
+}

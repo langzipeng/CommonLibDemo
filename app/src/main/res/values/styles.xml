@@ -1,0 +1,10 @@
+<resources>
+
+    <!--**************************************自定义控件画园*************************************-->
+    <declare-styleable name="RoundImageView">
+        <attr name="filletSize" format="dimension" />
+        <attr name="cropBgColor" format="color" />
+    </declare-styleable>
+
+
+</resources>

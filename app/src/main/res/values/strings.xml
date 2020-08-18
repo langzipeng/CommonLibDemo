@@ -1,0 +1,18 @@
+<resources>
+
+    <!--首页-->
+    <string name="home_title">首页</string>
+
+
+    <!--自定义控件Demo页-->
+    <string name="view_demo_title">自定义控件Demo</string>
+
+
+    <!--一些常用三方库Demo页-->
+    <string name="tripartite_demo_title">三方库Demo</string>
+
+
+    <!--BaseRvDemo-->
+    <string name="base_rv_demo">BaseRvDemo</string>
+
+</resources>
