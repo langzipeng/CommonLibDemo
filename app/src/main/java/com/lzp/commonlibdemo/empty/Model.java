@@ -7,5 +7,4 @@ import com.fast.common.mvp.BaseModel;
  */
 public class Model extends BaseModel implements Contract.Model{
 
-
 }
